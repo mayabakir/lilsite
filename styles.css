@@ -140,4 +140,51 @@ body {
 
 .contact a:last-child {
     margin-right: 0; /* Remove margin from last link */
+}
+
+/* Add responsive styles */
+@media screen and (max-width: 768px) {
+    /* Adjust main container padding */
+    .profile-container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    /* Make name slightly smaller on mobile */
+    .name {
+        font-size: 2.5rem;
+    }
+
+    /* Adjust thoughts layout for mobile */
+    .thoughts {
+        flex-direction: column;
+        gap: 2rem;
+        transform: none; /* Remove the left transform */
+        margin: 2rem auto; /* Center vertically */
+    }
+
+    .thoughts li {
+        margin: 0; /* Remove horizontal margins */
+    }
+
+    /* Adjust contact position for mobile */
+    .contact {
+        position: static; /* Change from relative to static */
+        margin: 3rem auto 2rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .contact p {
+        text-align: center;
+    }
+}
+
+/* Better touch interaction for mobile */
+@media (hover: none) {
+    .thoughts a:active,
+    .contact a:active {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+    }
 } 
