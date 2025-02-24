@@ -148,6 +148,8 @@ body {
     .profile-container {
         padding: 1rem;
         max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     /* Make name slightly smaller on mobile */
@@ -159,12 +161,15 @@ body {
     .thoughts {
         flex-direction: column;
         gap: 2rem;
-        transform: none; /* Remove the left transform */
-        margin: 2rem auto; /* Center vertically */
+        transform: none; /* Remove the transform that was shifting it left */
+        margin: 2rem auto;
+        padding: 0 1rem; /* Add some padding */
     }
 
     .thoughts li {
-        margin: 0; /* Remove horizontal margins */
+        margin: 0;
+        width: 100%; /* Ensure full width */
+        text-align: center; /* Center text */
     }
 
     /* Adjust contact position for mobile */
