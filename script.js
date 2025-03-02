@@ -48,4 +48,51 @@ document.addEventListener('DOMContentLoaded', () => {
             this.style.transform = '';
         });
     });
+});
+
+// Add music player functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const violinLink = document.getElementById('violin-link');
+    const audioFiles = [
+        'music/song1.mp3',
+        'music/song2.mp3',
+        'music/song3.mp3',
+        'music/song4.mp3',
+        'music/song5.mp3'
+    ];
+    
+    let currentTrack = 0;
+    let audio = new Audio();
+    let isPlaying = false;
+    
+    violinLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (!isPlaying) {
+            // Start playing
+            audio.src = audioFiles[currentTrack];
+            audio.play()
+                .catch(error => {
+                    console.error('Error playing audio:', error);
+                    // Try to handle autoplay restrictions
+                    if (error.name === 'NotAllowedError') {
+                        alert('Please interact with the page first to enable audio playback');
+                    }
+                });
+            isPlaying = true;
+            violinLink.textContent = '🎵'; // Change to music note when playing
+        } else {
+            // Stop playing
+            audio.pause();
+            isPlaying = false;
+            violinLink.textContent = '🎻'; // Change back to violin when stopped
+        }
+    });
+    
+    // When a song ends, play the next one
+    audio.addEventListener('ended', function() {
+        currentTrack = (currentTrack + 1) % audioFiles.length;
+        audio.src = audioFiles[currentTrack];
+        audio.play();
+    });
 }); 

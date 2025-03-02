@@ -192,4 +192,46 @@ body {
         transform: scale(1.1);
         transition: transform 0.2s ease;
     }
+}
+
+/* Add violin emoji to bottom right */
+.violin {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 2rem; /* Sized up */
+    opacity: 0.7; /* Slightly transparent */
+    z-index: 10;
+    user-select: none; /* Prevent selection */
+}
+
+/* Make it responsive */
+@media screen and (max-width: 768px) {
+    .violin {
+        position: static;
+        display: block;
+        text-align: center;
+        margin-top: 2rem;
+    }
+}
+
+/* Update violin styles to make it clickable */
+.violin a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: inline-block;
+}
+
+.violin a:hover,
+.violin a:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+.violin a:active {
+    transform: rotate(-5deg) scale(1.1);
+    opacity: 1;
+    text-decoration: none;
 } 
